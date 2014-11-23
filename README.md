@@ -19,18 +19,40 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 To use the module,
 
 ``` javascript
-var foo = require( 'compute-nanmax' );
+var max = require( 'compute-nanmax' );
 ```
 
-#### foo( arr )
+#### max( arr )
 
-What does this function do?
+Computes the maximum value of an array ignoring non-numeric values.
+
+``` javascript
+var data = [ -5, null, -2, -3, null, -7 ];
+
+var val = max( data );
+// returns -2
+```
+
+Note: if an input `array` does not contain any numeric values, the function returns `null`.
 
 
 ## Examples
 
 ``` javascript
-var foo = require( 'compute-nanmax' );
+var max = require( 'compute-nanmax' );
+
+// Simulate some data...
+var data = new Array( 100 );
+for ( var i = 0; i < data.length; i++ ) {
+	// Every so often insert a missing value...
+	if ( i%10 ) {
+		data[ i ] = null;
+	} else {
+		data[ i ] = -1 * Math.round( Math.random()*100 );
+	}
+}
+var val = max( data );
+console.log( val );
 ```
 
 To run the example code from the top-level application directory,

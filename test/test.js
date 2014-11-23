@@ -6,7 +6,7 @@ var // Expectation library:
 	chai = require( 'chai' ),
 
 	// Module to be tested:
-	lib = require( './../lib' );
+	max = require( './../lib' );
 
 
 // VARIABLES //
@@ -20,9 +20,48 @@ var expect = chai.expect,
 describe( 'compute-nanmax', function tests() {
 
 	it( 'should export a function', function test() {
-		expect( lib ).to.be.a( 'function' );
+		expect( max ).to.be.a( 'function' );
 	});
 
-	it( 'should do something' );
+	it( 'should throw an error if provided a non-array', function test() {
+		var values = [
+			'5',
+			5,
+			true,
+			undefined,
+			null,
+			NaN,
+			function(){},
+			{}
+		];
+
+		for ( var i = 0; i < values.length; i++ ) {
+			expect( badValue( values[i] ) ).to.throw( TypeError );
+		}
+		function badValue( value ) {
+			return function() {
+				max( value );
+			};
+		}
+	});
+
+	it( 'should return the maximum value', function test() {
+		var data, expected;
+
+		data = [ null, -4, -2, NaN, -5, -3, true, undefined, -8, -2 ];
+		expected = -2;
+
+		assert.strictEqual( max( data ), expected );
+	});
+
+	it( 'should return null if an input array does not contain any numeric values', function test() {
+		var data;
+
+		data = [ null, true, [], NaN ];
+
+		assert.isNull( max( data ) );
+
+		assert.isNull( max( [] ) );
+	});
 
 });

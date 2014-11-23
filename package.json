@@ -25,7 +25,16 @@
   "keywords": [
     "compute.io",
     "compute",
-    "computation"
+    "computation",
+    "mathematics",
+    "math",
+    "statistics",
+    "stats",
+    "max",
+    "maximum",
+    "missing values",
+    "nan",
+    "array"
   ],
   "bugs": {
     "url": "https://github.com/compute-io/nanmax/issues"
