@@ -21,7 +21,7 @@ For use in the browser, use [browserify](https://github.com/substack/node-browse
 var max = require( 'compute-nanmax' );
 ```
 
-#### max( arr )
+#### max( arr[, accessor] )
 
 Computes the maximum value of an array ignoring non-numeric values. For numeric `arrays`,
 
